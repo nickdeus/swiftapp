@@ -13,7 +13,8 @@ class  BottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Obx((){
-      if(_homeController.isLoading.value){
+      // if(_homeController.isLoading.value){
+        if(_homeController.isLoading.value == true ){
         return
           Container(
             padding: EdgeInsets.all(14),

@@ -47,7 +47,8 @@ class HomeController extends GetxController{
         }
       }
       catch(e){
-        print(e);
+        errorMessage.value = 'Network Error';
+        isLoading.value = false;
       }
 
      }
@@ -62,7 +63,7 @@ class HomeController extends GetxController{
     }
 
     try{
-      isLoading.value = true;
+      homeDataLoading.value = true;
       final getHomeResponse = await _apiService.postRequest("/home", {
         "token": token,
       });
@@ -80,6 +81,7 @@ class HomeController extends GetxController{
 
 
      void closeBottomSheet(){
+        isLoading.value =  false;
         trackingCode.value = "";
         senderPhone.value = "";
         isSuccess.value = false;

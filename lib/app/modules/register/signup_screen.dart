@@ -14,7 +14,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  SafeArea(child:
+      body:  Container(height:MediaQuery.sizeOf(context).height ,child:
       Padding(
         padding:  EdgeInsets.symmetric(vertical: MediaQuery.sizeOf(context).height*0.3),
         child: SingleChildScrollView(
@@ -24,7 +24,7 @@ class SignupScreen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                      Text("Tack Now ", style: GoogleFonts.poppins(
+                      Text("Track Now ", style: GoogleFonts.poppins(
                           fontSize: 34,
                           color: AppColors.primaryPink
                       ),),

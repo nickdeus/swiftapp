@@ -65,11 +65,11 @@ _shippingController.userShippingData();
             icon: Icon(Iconsax.people_copy),
             label: 'Clients',
           ),
-          NavigationDestination(
-              selectedIcon: Icon(Iconsax.note_1, color: AppColors.secondaryBlue),
-              icon: Icon(Iconsax.note_1_copy),
-              label: 'Report',
-          ),
+          // NavigationDestination(
+          //     selectedIcon: Icon(Iconsax.note_1, color: AppColors.secondaryBlue),
+          //     icon: Icon(Iconsax.note_1_copy),
+          //     label: 'Report',
+          // ),
         ],
       ),
       backgroundColor: AppColors.backgroundGray,
