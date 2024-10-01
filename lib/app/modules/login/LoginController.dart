@@ -61,4 +61,22 @@ class LoginController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  void logout() async {
+    isLoading.value = true;
+    try {
+      // Clear token
+      // await _tokenService.removeToken();
+
+      // Optionally clear any other session information if necessary
+
+      // Redirect to the login page
+      Get.offAllNamed(Routes.login);
+    } catch (e) {
+      // Handle error
+      print('Logout failed: $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

@@ -6,6 +6,7 @@ import 'package:swiftapp/app/modules/clients/clients_screen.dart';
 import 'package:swiftapp/app/modules/home/home_controller.dart';
 import 'package:swiftapp/app/modules/home/widgets/BottomSheetContent.dart';
 import 'package:swiftapp/app/modules/home/widgets/StatCard.dart';
+import 'package:swiftapp/app/modules/login/LoginController.dart';
 import 'package:swiftapp/app/modules/reports/reports_screen.dart';
 import 'package:swiftapp/app/modules/shipping/shipping_screen.dart';
 import '../../utils/colors.dart';
@@ -15,6 +16,7 @@ import '../shipping/ShippingController.dart';
 class Dashboard extends StatefulWidget {
   final HomeController  _homeController =  Get.put(HomeController());
   final ShippingController  _shippingController =  Get.put(ShippingController());
+  final LoginController  _loginController =  Get.put(LoginController());
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -25,6 +27,7 @@ class _DashboardState extends State<Dashboard> {
   int currentPageIndex = 0;
   final HomeController _homeController = Get.find();
   final ShippingController _shippingController = Get.find();
+  final LoginController  _loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -92,23 +95,63 @@ _shippingController.userShippingData();
         child: const Icon(Iconsax.box_search,color: AppColors.primaryWhite,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        elevation: 0,
-        scrolledUnderElevation: 10,
-        actions:[
-            Icon(Iconsax.setting_2_copy, size: 28, color: AppColors.secondaryBlue,),
-            SizedBox(width: 10,),
-            Icon(Iconsax.notification_copy,size: 28,color: AppColors.primaryPink,),
-            SizedBox(width: 10,),
+        appBar: AppBar(
+          elevation: 0,
+          scrolledUnderElevation: 10,
+          centerTitle: true,
+          backgroundColor: AppColors.primaryWhite,
+          title: Text(
+            "Swiftcargo",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              color: AppColors.primaryPink,
+            ),
+          ),
+          actions: [
+            // Clickable settings icon with dropdown menu
+            PopupMenuButton<int>(
+              icon: Icon(
+                Iconsax.setting_2_copy,
+                size: 28,
+                color: AppColors.secondaryBlue,
+              ),
+              onSelected: (value) {
+                // Add your onClick logic here
+                if (value == 1) {
+                  print("Settings clicked");
+                  // Navigate to settings page or show another dialog
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 1,
+                  child: TextButton(
+                    onPressed: () {
+                      // Add your logout functionality here
+                      _loginController.logout();
+                    },
+                    child: Text(
+                      "Logout",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.primaryDark,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(width: 10),
+            Icon(
+              Iconsax.notification_copy,
+              size: 28,
+              color: AppColors.primaryPink,
+            ),
+            SizedBox(width: 10),
           ],
-
-        centerTitle : true,
-        backgroundColor: AppColors.primaryWhite,
-        title: Text("Swiftcargo",style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-            color: AppColors.primaryPink),)
-      ) ,
+        ),
       body:   pages[currentPageIndex]
     );
   }
