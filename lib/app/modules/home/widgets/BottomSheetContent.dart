@@ -46,7 +46,7 @@ class  BottomSheetContent extends StatelessWidget {
                     _buildTableRow('Customer name:', _homeController.data["recipient_name"]),
                     _buildTableRow('Phone:', _homeController.data["recipient_phone"]),
                     _buildTableRow('Shipping cargo name:', _homeController.data["shipping_cargo_name"]),
-                    _buildTableRow('No of packages:', _homeController.data["shipping_items"].length),
+                    _buildTableRow('No of packages:', _homeController.data["shipping_items"].length.toString()),
                     _buildTableRow('Cost:', _homeController.data["amount_paid"]),
                     _buildTableRow('Status:', _homeController.data["shipping_status"]),
                     _buildTableRow('Departure:', _homeController.data["date_loaded"]),

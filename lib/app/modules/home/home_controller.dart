@@ -41,7 +41,7 @@ class HomeController extends GetxController{
         if(response.data["status"] == "success"){
           isSuccess.value = true;
           data.value = response.data["body"] ?? {};
-          sheetHeight.value = 500.0;
+          sheetHeight.value = 400;
         }else{
           errorMessage.value = "Incorrect Tracking Details";
         }
